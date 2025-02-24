@@ -1,8 +1,8 @@
-nombre,latitud,longitud
-Gran Muralla China,40.4319,116.5704
-Petra,30.3285,35.4444
-Coliseo,41.8902,12.4922
-Chichén Itzá,20.6843,-88.5678
-Machu Picchu,-13.1631,-72.5450
-Taj Mahal,27.1751,78.0421
-Cristo Redentor,-22.9519,-43.2105
+nom,latitud,longitud,continent,descripcio,imatge
+Gran Muralla Xina,40.4319,116.5704,Àsia,La muralla més llarga del món,https://upload.wikimedia.org/wikipedia/commons/6/6f/Great_Wall_China.jpg
+Petra,30.3285,35.4444,Àsia,Una ciutat excavada a la roca,https://upload.wikimedia.org/wikipedia/commons/e/ec/Petra_Jordan_BW_36.jpg
+Colosseu,41.8902,12.4922,Europa,Un antic amfiteatre romà,https://upload.wikimedia.org/wikipedia/commons/d/de/Colosseo_2020.jpg
+Chichén Itzá,20.6830,-88.5686,Amèrica,Una antiga ciutat maia a Mèxic,https://upload.wikimedia.org/wikipedia/commons/3/3f/Chichen_Itza_1.jpg
+Machu Picchu,-13.1631,-72.5450,Amèrica,Una ciutat inca a la serralada dels Andes,https://upload.wikimedia.org/wikipedia/commons/e/eb/Machu_Picchu%2C_Peru.jpg
+Taj Mahal,27.1751,78.0421,Àsia,Un mausoleu de marbre blanc a l'Índia,https://upload.wikimedia.org/wikipedia/commons/1/1e/Taj_Mahal_2012.jpg
+Crist Redemptor,-22.9519,-43.2105,Amèrica,Una estàtua icònica de Jesucrist a Rio de Janeiro,https://upload.wikimedia.org/wikipedia/commons/9/97/Christ_the_Redeemer_-_Cristo_Redentor.jpg

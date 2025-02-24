@@ -1,33 +1,56 @@
 // mapa del mon
-const map = L.map('map').setView([20, 0], 2);
+const mapa = L.map('map').setView([20, 0], 2);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
-}).addTo(map);
+}).addTo(mapa);
 
-// Funció porcessar csv
-function procesarCSV(file) {
-    Papa.parse(file, {
+let totesLesMaravelles = [];
+let marcadors = [];
+
+// Funció per processar CSV
+function processarCSV(archivo) {
+    Papa.parse(archivo, {
         header: true,
         skipEmptyLines: true,
         complete: function(results) {
-            const datos = results.data;
-            datos.forEach(lugar => {
-                const nombre = lugar.nombre;
-                const latitud = parseFloat(lugar.latitud);
-                const longitud = parseFloat(lugar.longitud);
-
-                if (!isNaN(latitud) && !isNaN(longitud)) {
-                    const marcador = L.marker([latitud, longitud]).addTo(map);
-                    marcador.bindPopup(`<b>${nombre}</b>`);
-                }
-            });
+            const dades = results.data;
+            totesLesMaravelles = dades;
+            mostrarMaravelles(dades);
         }
     });
 }
 
-// drop fitxer csv
+// Mostrar i marcar meravelles
+    function mostrarMaravelles(maravelles) {
+        marcadors.forEach(marcador => mapa.removeLayer(marcador));
+        marcadors = [];
+    
+        const llistaMaravelles = document.getElementById('llista-maravelles');
+        llistaMaravelles.innerHTML = '';
+    
+        maravelles.forEach(lloc => {
+            const { nom, latitud, longitud, descripcio, imatge } = lloc;
+    
+            if (!isNaN(parseFloat(latitud)) && !isNaN(parseFloat(longitud))) {
+                const marcador = L.marker([latitud, longitud]).addTo(mapa);
+                marcador.bindPopup(`<b>${nom}</b><br>${descripcio}<br><img src="${imatge}" width="100">`);
+                marcadors.push(marcador);
+    
+                const elementLlista = document.createElement('li');
+                elementLlista.innerHTML = `
+                    <b>${nom}</b><br>
+                    <img src="${imatge}" width="100"><br>
+                    ${descripcio}
+                `;
+                llistaMaravelles.appendChild(elementLlista);
+            }
+        });
+    }
+    
+
+// Gestió de Dropzone
 const dropzone = document.getElementById('dropzone');
 dropzone.addEventListener('dragover', (event) => {
     event.preventDefault();
@@ -43,10 +66,21 @@ dropzone.addEventListener('drop', (event) => {
     dropzone.style.backgroundColor = "transparent";
     const archivo = event.dataTransfer.files[0];
     
-    // Verifica que sigui fitxer csv
     if (archivo && archivo.type === "text/csv") {
-        procesarCSV(archivo);
+        processarCSV(archivo);
     } else {
-        alert("Por favor, sube un archivo CSV válido.");
+        alert("Si us plau, puja un fitxer CSV vàlid.");
+    }
+});
+
+// Filtres per continent
+const filtresContinents = document.getElementById('filtres-continents');
+filtresContinents.addEventListener('click', (event) => {
+    const continentSeleccionat = event.target.getAttribute('data-continent');
+    if (continentSeleccionat === "Tots") {
+        mostrarMaravelles(totesLesMaravelles);
+    } else {
+        const filtrades = totesLesMaravelles.filter(m => m.continent === continentSeleccionat);
+        mostrarMaravelles(filtrades);
     }
 });
