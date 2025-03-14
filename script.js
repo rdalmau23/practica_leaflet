@@ -7,13 +7,13 @@ class MapaMaravelles {
             attribution: '© OpenStreetMap'
         }).addTo(this.mapa);
 
-        this.marcadors = [];
+        this.marcadors = new Map(); // Guardar els marcadors amb el nom com a clau
     }
 
     mostrarMaravelles(maravelles) {
         // Netejar marcadors antics
         this.marcadors.forEach(marcador => this.mapa.removeLayer(marcador));
-        this.marcadors = [];
+        this.marcadors.clear();
 
         const llistaMaravelles = document.getElementById('llista-maravelles');
         llistaMaravelles.innerHTML = '';
@@ -25,7 +25,7 @@ class MapaMaravelles {
                 // Afegir marcador al mapa
                 const marcador = L.marker([latitud, longitud]).addTo(this.mapa);
                 marcador.bindPopup(`<b>${nom}</b><br>${descripcio}<br><img src="${imatge}" width="100">`);
-                this.marcadors.push(marcador);
+                this.marcadors.set(nom, marcador);
 
                 // Afegir a la llista lateral
                 const elementLlista = document.createElement('li');
@@ -33,10 +33,43 @@ class MapaMaravelles {
                     <b>${nom}</b><br>
                     <img src="${imatge}" width="100"><br>
                     ${descripcio}
+                    <button class="btn-delete" data-nom="${nom}">❌</button>
                 `;
                 llistaMaravelles.appendChild(elementLlista);
             }
         });
+
+        // Afegir esdeveniments als botons de delete
+        document.querySelectorAll('.btn-delete').forEach(btn => {
+            btn.addEventListener('click', (event) => {
+                const nom = event.target.getAttribute('data-nom');
+                this.eliminarMaravella(nom);
+            });
+        });
+    }
+
+    eliminarMaravella(nom) {
+        // Eliminar del mapa
+        if (this.marcadors.has(nom)) {
+            this.mapa.removeLayer(this.marcadors.get(nom));
+            this.marcadors.delete(nom);
+        }
+
+        // Eliminar de la llista
+        const llistaMaravelles = document.getElementById('llista-maravelles');
+        const elements = llistaMaravelles.querySelectorAll('li');
+        elements.forEach(el => {
+            if (el.innerHTML.includes(nom)) {
+                el.remove();
+            }
+        });
+
+        // Eliminar de la llista general de meravelles
+        this.gestorCSV.totesLesMaravelles = this.gestorCSV.totesLesMaravelles.filter(m => m.nom !== nom);
+    }
+
+    assignarGestorCSV(gestorCSV) {
+        this.gestorCSV = gestorCSV;
     }
 }
 
@@ -110,5 +143,6 @@ class UI {
 document.addEventListener('DOMContentLoaded', () => {
     const mapa = new MapaMaravelles();
     const gestorCSV = new GestorCSV(mapa.mostrarMaravelles.bind(mapa));
+    mapa.assignarGestorCSV(gestorCSV);
     new UI(mapa, gestorCSV);
 });
