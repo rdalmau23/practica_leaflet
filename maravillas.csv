@@ -1,8 +1,8 @@
-nom,latitud,longitud,continent,descripcio,imatge
-Gran Muralla Xina,40.4319,116.5704,Àsia,La muralla més llarga del món,https://upload.wikimedia.org/wikipedia/commons/6/6f/Great_Wall_China.jpg
-Petra,30.3285,35.4444,Àsia,Una ciutat excavada a la roca,https://upload.wikimedia.org/wikipedia/commons/e/ec/Petra_Jordan_BW_36.jpg
-Colosseu,41.8902,12.4922,Europa,Un antic amfiteatre romà,https://upload.wikimedia.org/wikipedia/commons/d/de/Colosseo_2020.jpg
-Chichén Itzá,20.6830,-88.5686,Amèrica,Una antiga ciutat maia a Mèxic,https://upload.wikimedia.org/wikipedia/commons/3/3f/Chichen_Itza_1.jpg
-Machu Picchu,-13.1631,-72.5450,Amèrica,Una ciutat inca a la serralada dels Andes,https://upload.wikimedia.org/wikipedia/commons/e/eb/Machu_Picchu%2C_Peru.jpg
-Taj Mahal,27.1751,78.0421,Àsia,Un mausoleu de marbre blanc a l'Índia,https://upload.wikimedia.org/wikipedia/commons/1/1e/Taj_Mahal_2012.jpg
-Crist Redemptor,-22.9519,-43.2105,Amèrica,Una estàtua icònica de Jesucrist a Rio de Janeiro,https://upload.wikimedia.org/wikipedia/commons/9/97/Christ_the_Redeemer_-_Cristo_Redentor.jpg
+nom,latitud,longitud,continent,descripcio,imatge,codiPais
+Gran Muralla Xina,40.4319,116.5704,Àsia,La muralla més llarga del món,https://plus.unsplash.com/premium_photo-1694475385208-8215484816a8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D,CN
+Petra,30.3285,35.4444,Àsia,Una ciutat excavada a la roca,https://media.istockphoto.com/id/1170941515/photo/al-khazneh-in-petra.webp?a=1&b=1&s=612x612&w=0&k=20&c=0qXjpjFBb-645Z8b-UKvs-KPzyzFjGoY9MQwQuaJR8s=,JO
+Colosseu,41.8902,12.4922,Europa,Un antic amfiteatre romà,https://upload.wikimedia.org/wikipedia/commons/d/de/Colosseo_2020.jpg,IT
+Chichén Itzá,20.6830,-88.5686,Amèrica,Una antiga ciutat maia a Mèxic,https://plus.unsplash.com/premium_photo-1697730073345-fcb1cdc8334c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2hpY2hlbiUyMGl0emF8ZW58MHx8MHx8fDA%3D,MX
+Machu Picchu,-13.1631,-72.5450,Amèrica,Una ciutat inca a la serralada dels Andes,https://upload.wikimedia.org/wikipedia/commons/e/eb/Machu_Picchu%2C_Peru.jpg,PE
+Taj Mahal,27.1751,78.0421,Àsia,Un mausoleu de marbre blanc a l'Índia,https://media.istockphoto.com/id/154946427/photo/taj-mahal-silhouette.webp?a=1&b=1&s=612x612&w=0&k=20&c=d3bgurMK4BUiIur5n8j9oTu12HSGvI96Jxf2D4X26Ws=,IN
+Crist Redemptor,-22.9519,-43.2105,Amèrica,Una estàtua icònica de Jesucrist a Rio de Janeiro,https://media.istockphoto.com/id/1312539295/photo/aerial-view-of-sanctuary-of-christ-the-king-or-santuario-de-cristo-rei-on-sunny-summer-day.webp?a=1&b=1&s=612x612&w=0&k=20&c=0veSEuW-FOG9DfdLmirGqM83pbMVobuNjRWsknSynx8=,BR
