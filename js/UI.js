@@ -33,15 +33,18 @@ export class UI {
     }
 
     configurarFiltres() {
-        const filtresContinents = document.getElementById('filtres-continents');
-        filtresContinents.addEventListener('click', (event) => {
-            const continentSeleccionat = event.target.getAttribute('data-continent');
-            if (continentSeleccionat === "Tots") {
-                this.mapa.mostrarMaravelles(this.gestorCSV.totesLesMaravelles);
+        const filtreTipus = document.getElementById('filtre-tipus');
+        filtreTipus.addEventListener('change', (event) => {
+            const tipusSeleccionat = event.target.value;
+            let filtrades;
+    
+            if (tipusSeleccionat === "Tots") {
+                filtrades = this.gestorCSV.totesLesMaravelles;
             } else {
-                const filtrades = this.gestorCSV.totesLesMaravelles.filter(m => m.continent === continentSeleccionat);
-                this.mapa.mostrarMaravelles(filtrades);
+                filtrades = this.gestorCSV.totesLesMaravelles.filter(m => m.tipus === tipusSeleccionat);
             }
+    
+            this.mapa.mostrarMaravelles(filtrades);
         });
     }
 }
